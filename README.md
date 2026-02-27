@@ -2,9 +2,9 @@
 
 Yes it's **Windows**
 
-![GitHub Release](https://img.shields.io/github/v/release/jade-tam/dotfiles)
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/jade-tam/dotfiles/changeset-versioning.yml)
-![GitHub License](https://img.shields.io/github/license/jade-tam/dotfiles)
+![GitHub Release](https://img.shields.io/github/v/release/lossthannothing/dotfiles)
+![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/lossthannothing/dotfiles/changeset-versioning.yml)
+![GitHub License](https://img.shields.io/github/license/lossthannothing/dotfiles)
 ![Discord](https://img.shields.io/discord/1162030825290866698)
 
 ## Introduction
@@ -35,10 +35,12 @@ Dive in, tweak to your heart's content, and transform your Windows environment i
 
 - Terminal: **Windows Terminal**
 - Shell: **Zsh** inside MSYS2
-- Tiling Window Manager: **GlazeWM 3.9.1**
-- Bar: **Zebar 3.1.1**
+- Tiling Window Manager: **Komorebi**
+- Bar: **Yasb**
+- Hotkey Daemon: **whkd**
 - Package manager: **Winget**
 - Dotfiles manager: **Chezmoi**
+- Prompt: **Starship**
 
 ## 🎨 Themes
 
@@ -67,41 +69,17 @@ Dive in, tweak to your heart's content, and transform your Windows environment i
 | A gentle presence in shades of purple |
 |![shuri-1](rice-previews/shuri-1.png)|
 |![shuri-2](rice-previews/shuri-2.png)|
-<!--
-| 🕹️ arcade |
-| :---: |
-| ⚠️ WARNING! Only For Truest Gamer!! May hurt your eyes!!! |
-|![arcade-1](rice-previews/arcade-1.png)|
-|![arcade-2](rice-previews/arcade-2.png)|
-
-| ✨ khanhoa |
-| :---: |
-| Joyful and adventurous |
-|![khanhoa-1](rice-previews/khanhoa-1.png)|
-|![khanhoa-2](rice-previews/khanhoa-2.png)|
-
-| ✨ khlinh |
-| :---: |
-| Gentle and wise, truly exceptional |
-|![khlinh-1](rice-previews/khlinh-1.png)|
-|![khlinh-2](rice-previews/khlinh-2.png)|
-
-| 💜 shuri |
-| :---: |
-| Radiant love for purple, deeply cherished soul, mah lovely queen 👑 |
-|![shuri-1](rice-previews/shuri-1.png)|
-|![shuri-2](rice-previews/shuri-2.png)| -->
 
 ## ⚙️ Current Configurable Settings
 
 You can customize each theme inside ~/.rice-manager/rices and re-apply it (see **Change theme** below)
 
 - ☑️ Windows Terminal theme
-- ☑️ GlazeWM border theme
-- ☑️ Zebar theme
+- ☑️ Komorebi border theme
+- ☑️ Yasb theme
 - ☑️ Desktop wallpaper based on rice
 - ☑️ Vscode theme
-- ~~☑️ Windows light/dark mode based on rice~~ ❌ Disabled - currently unstable and buggy
+- ~~☑️ Windows light/dark mode~~ ❌ Disabled
 - ❓ Windows color based on rice
 - 🚧 *under construction*
 
@@ -123,17 +101,26 @@ You can customize each theme inside ~/.rice-manager/rices and re-apply it (see *
 
 | Keys | Action |
 |:-|:-|
-|<kbd>alt</kbd> + <kbd>enter</kbd>| Open terminal|
-|<kbd>alt</kbd> + <kbd>Space</kbd>| Open powertoy run |
-|<kbd>alt</kbd> + <kbd>h\|j\|k\|l</kbd>| Focus window left \| bottom \| top \| right|
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h\|j\|k\|l</kbd>| Move focusing window left \| bottom \| top \| right|
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>q</kbd>| Close focusing window|
-|<kbd>alt</kbd> + <kbd>1\|2\|3\|4\|5\|6\|7\|8\|9\|0</kbd>| Focus workspace {n}|
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1\|2\|3\|4\|5\|6\|7\|8\|9\|0</kbd>| Move focusing window to workspace {n}|
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| Reload glazewm config |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>e</kbd>| Exit glazewm |
+|<kbd>alt</kbd> + <kbd>h</kbd>| Focus window left |
+|<kbd>alt</kbd> + <kbd>j</kbd>| Focus window bottom |
+|<kbd>alt</kbd> + <kbd>k</kbd>| Focus window top |
+|<kbd>alt</kbd> + <kbd>l</kbd>| Focus window right |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h\|j\|k\|l</kbd>| Move window |
+|<kbd>alt</kbd> + <kbd>u</kbd>| Shrink window horizontally |
+|<kbd>alt</kbd> + <kbd>p</kbd>| Expand window horizontally |
+|<kbd>alt</kbd> + <kbd>i</kbd>| Shrink window vertically |
+|<kbd>alt</kbd> + <kbd>o</kbd>| Expand window vertically |
+|<kbd>alt</kbd> + <kbd>v</kbd>| Toggle split direction |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>Space</kbd>| Toggle float |
+|<kbd>alt</kbd> + <kbd>t</kbd>| Toggle tiling |
+|<kbd>alt</kbd> + <kbd>f</kbd>| Toggle maximize |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>q</kbd>| Close window |
+|<kbd>alt</kbd> + <kbd>1-0</kbd>| Focus workspace 1-10 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1-0</kbd>| Move to workspace 1-10 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| Reload configuration |
+|<kbd>alt</kbd> + <kbd>enter</kbd>| Open terminal |
 
-ℹ️ More keybinding can be found [here](https://github.com/glzr-io/glazewm/blob/main/resources/assets/cheatsheet.png)
+ℹ️ Keybindings managed by **whkd** - see `$USERPROFILE/.config/whkdrc` for customization
 
 ## 📦 Step by Step Installation (Working 100% - last tested 16/5/2025)
 
@@ -163,7 +150,7 @@ Font need to be download and install manually *(Windows is planning to allows in
 
 - Install chezmoi from Winget with: ```winget install chezmoi```
 - Close and reopen terminal for chezmoi command to be recognized.
-- Initialize chezmoi and apply the dotfiles with: ```chezmoi init --apply jade-tam```
+- Initialize chezmoi and apply the dotfiles with: ```chezmoi init --apply lossthannothing```
 - If you are using Windows Terminal, you will notice the terminal theme changed immediately.
 
 ### Install packages
@@ -253,12 +240,20 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ./.config/zs
   - To change vscode UI Font, use this extension: [Fonted](https://marketplace.visualstudio.com/items?itemName=degreat.fonted)
   - To make VSCode window transparent: <https://marketplace.visualstudio.com/items?itemName=s-nlf-fh.glassit>
 
-### Auto start GlazeWM & Zebar at windows start
+### Auto start Komorebi & Yasb at windows start
 
-- Just need to copy the GlazeWM shortcut.
+- Create a startup script or shortcut for **whkd** and **Komorebi**.
 - Open Start Up folder by pressing **Windows + R** and type in ```shell:startup```
-- Paste the shortcut in here and we are done, you can also run GlazeWM now.
-- Zebar is open and close with GlazeWM.
+- Add shortcuts/scripts for:
+  - **whkd** (hotkey daemon - required for Komorebi keybindings)
+  - **komorebic** (Komorebi CLI)
+- Yasb can be started alongside Komorebi or managed separately.
+- Example startup command (create a batch file or shortcut):
+  ```
+  start whkd
+  komorebic start --await-frontend
+  yasb
+  ```
 
 ### Optional Tweaks
 

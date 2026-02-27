@@ -22,8 +22,8 @@ Windows 安装和系统优化脚本集合，使用 PowerShell 编写。
 
 ```powershell
 # 窗口管理
-winget install glzr-io.glazewm      # GlazeWM 平铺窗口管理器
-winget install glzr-io.zebar        # Zebar 状态栏
+winget install --id LGUG2Z.komorebi -e --silent   # Komorebi 平铺窗口管理器
+winget install --id AmN.yasb -e --silent          # Yasb 状态栏
 
 # 开发环境
 winget install MSYS2.MSYS2          # Unix 工具链
@@ -31,7 +31,8 @@ winget install jqlang.jq            # JSON 处理
 winget install mikefarah.yq         # YAML 处理
 
 # 终端工具
-winget install Starship.Starship    # 提示符主题
+winget install --id Starship.Starship -e --silent  # Starship 提示符
+winget install --id eza-community.eza -e --silent  # eza (ls 替代)
 ```
 
 ### 可选软件

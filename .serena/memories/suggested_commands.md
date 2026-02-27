@@ -4,7 +4,7 @@
 
 ```bash
 # 初始化并应用配置
-chezmoi init --apply jade-tam
+chezmoi init --apply lossthannothing
 
 # 应用配置变更
 chezmoi apply
