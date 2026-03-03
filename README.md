@@ -46,29 +46,33 @@ Dive in, tweak to your heart's content, and transform your Windows environment i
 
 ℹ️Note: This dotfiles are configured specifically for my 1440p screen, so things might appear larger on smaller screens. I suggest using my dotfiles as a base and customizing it to fit your specific needs.
 
-| ✨ jade |
-| :---: |
-| A soul with raw edges, nostalgic warmth, and unspoken strength |
-|![jade-1](rice-previews/jade-1.png)|
-|![jade-2](rice-previews/jade-2.png)|
+Themes from [yasb-themes marketplace](https://github.com/amnweb/yasb-themes), Komorebi uses Catppuccin color palette.
 
-| ✨ wasabi |
-| :---: |
-| Mysterious and alluring |
-|![wasabi-1](rice-previews/wasabi-1.png)|
-|![wasabi-2](rice-previews/wasabi-2.png)|
+### Available Themes (17)
 
-| ✨ aqua |
-| :---: |
-| Full of curiosity and charm |
-|![aqua-1](rice-previews/aqua-1.png)|
-|![aqua-2](rice-previews/aqua-2.png)|
+| Theme | Style | Description |
+|-------|-------|-------------|
+| `everforest` | Deep green | Default theme, Everforest style - natural, muted tones |
+| `gruvbox` | Brown/yellow | Gruvbox Material Dark - warm retro colors |
+| `catppuccin` | Blue/purple | Catppuccin Mocha - classic, soft colors |
+| `comfyppuccin` | Warm purple | Comfyppuccin (Macchiato) - cozy and comfortable |
+| `edgerunners` | Neon/cyber | Edgerunners - cyberpunk neon aesthetic |
+| `dark_nord` | Deep blue | Dark Nord - Nordic inspired cool tones |
+| `sky_theme` | Blue/yellow | Sky Theme - soft sky colors with transparency |
+| `neos` | Clean/minimal | Neos - clean and minimal design |
+| `cosmic` | Dynamic/colorful | Cosmic Bar - dynamic colorful appearance |
+| `spectrum` | Warm/rich | Spectrum Symphony - warm rich tones |
+| `acrylic` | Frosted glass | Acrylic - frosted glass blue effect |
+| `moonlit` | Warm/deep | Moonlit Harmony - warm and deep colors |
+| `soft_segment` | Segmented/soft | Soft Segment - segmented soft design |
+| `fluent` | Win11 style | Fluent Design - Windows 11 native style |
+| `minimal` | Ultra minimal | Minimal but productive - ultra minimal design |
+| `proto` | Minimal | Proto - minimal productive theme |
+| `pillbox` | Pill-shaped | Pillbox - pill-shaped layout design |
 
-| ✨ shuri |
-| :---: |
-| A gentle presence in shades of purple |
-|![shuri-1](rice-previews/shuri-1.png)|
-|![shuri-2](rice-previews/shuri-2.png)|
+### Preview
+
+*Theme previews coming soon - feel free to contribute screenshots!*
 
 ## ⚙️ Current Configurable Settings
 
@@ -289,8 +293,9 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ./.config/zs
 - Icons: [Material Icon Theme](https://marketplace.visualstudio.com/items?itemName=PKief.material-icon-theme) - *best icon pack in my opinion*
 - Themes:
   - [Tinted VSCode](https://marketplace.visualstudio.com/items?itemName=TintedTheming.base16-tinted-themes) - *using by other themes*
-  - [Gruvbox Theme](https://marketplace.visualstudio.com/items?itemName=jdinhlife.gruvbox) - *using by Wasabi theme*
-  - [Everforest](https://marketplace.visualstudio.com/items?itemName=sainnhe.everforest) - *using by Jade theme*
+  - [Gruvbox Theme](https://marketplace.visualstudio.com/items?itemName=jdinhlife.gruvbox) - *using by gruvbox theme*
+  - [Everforest](https://marketplace.visualstudio.com/items?itemName=sainnhe.everforest) - *using by everforest theme*
+  - [Catppuccin](https://marketplace.visualstudio.com/items?itemName=Catppuccin.catppuccin-vsc) - *using by catppuccin, comfyppuccin themes*
 - ADDITIONAL:
   - To change vscode UI Font, use this extension: [Fonted](https://marketplace.visualstudio.com/items?itemName=degreat.fonted)
   - To make VSCode window transparent: <https://marketplace.visualstudio.com/items?itemName=s-nlf-fh.glassit>
