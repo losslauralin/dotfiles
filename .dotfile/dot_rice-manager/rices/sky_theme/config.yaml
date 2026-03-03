@@ -1,0 +1,298 @@
+watch_stylesheet: true
+watch_config: true
+debug: false
+komorebi:
+  start_command: "komorebic start --whkd"
+  stop_command: "komorebic stop --whkd"
+  reload_command: "komorebic reload-configuration"
+bars:
+  primary-bar:
+    enabled: true
+    screens: ["*"]
+    class_name: "yasb-bar"
+    alignment:
+      position: "top"
+      center: false
+    animation:
+      enabled: true
+      duration: 1000
+    blur_effect:
+      enabled: false
+      acrylic: true
+      dark_mode: true
+      round_corners: false
+      border_color: None
+    window_flags:
+      always_on_top: true
+      windows_app_bar: true
+      hide_on_fullscreen: true
+    dimensions:
+      width: "100%"
+      height: 32
+    padding:
+      top: 1
+      left: 0
+      bottom: 0
+      right: 0
+    widgets:
+      left: [
+        "komorebi_workspaces",
+        "apps",
+        "media",
+        "cava"
+      ]
+      center: [
+        "clock"
+      ]
+      right: [
+        "active_window",
+        "taskbar",
+        "cpu",
+        "memory",
+        "volume",
+        "language",
+        "wifi",
+        "notifications"
+      ]
+widgets:
+  wifi:
+    type: "yasb.wifi.WifiWidget"
+    options:
+      label: "<span>{wifi_icon}</span>"
+      label_alt: "{wifi_name} {wifi_strength}%"
+      update_interval: 5000
+      callbacks:
+        on_left: "exec cmd.exe /c start ms-settings:network"
+        on_middle: "do_nothing"
+        on_right: "toggle_label"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+      wifi_icons: [
+        "\udb82\udd2e",
+        "\udb82\udd1f",
+        "\udb82\udd22",
+        "\udb82\udd25",
+        "\udb82\udd28"
+      ]
+  language:
+    type: "yasb.language.LanguageWidget"
+    options:
+      label: "<span>\uf11c</span>{lang[country_code]}"
+      update_interval: 5
+      callbacks:
+        on_left: "do_nothing"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 8
+  cava:
+    type: "yasb.cava.CavaWidget"
+    options:
+      bar_height: 12
+      min_bar_height: 0
+      gradient: 1
+      reverse: 0
+      foreground: "#89b4fa"
+      gradient_color_1: '#70C4BD'
+      gradient_color_2: '#fff4bd'
+      gradient_color_3: '#f393ae'
+      bars_number: 10
+      bar_spacing: 2
+      bar_width: 4
+      sleep_timer: 2
+      hide_empty: true
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  active_window:
+    type: "yasb.active_window.ActiveWindowWidget"
+    options:
+      label: "{win[title]}"
+      label_alt: "[class_name='{win[class_name]}' exe='{win[process][name]}' hwnd={win[hwnd]}]"
+      label_no_window: ""
+      label_icon: true
+      label_icon_size: 14
+      max_length: 32
+      max_length_ellipsis: "..."
+      monitor_exclusive: false
+  cpu:
+    type: "yasb.cpu.CpuWidget"
+    options:
+      label: "<span>\uf4bc</span> {info[percent][total]}%"
+      label_alt: "<span>\uf437</span> {info[histograms][cpu_percent]}"
+      update_interval: 2000
+      histogram_icons:
+        - '\u2581'
+        - '\u2581'
+        - '\u2582'
+        - '\u2583'
+        - '\u2584'
+        - '\u2585'
+        - '\u2586'
+        - '\u2587'
+        - '\u2588'
+      histogram_num_columns: 8
+      callbacks:
+        on_right: "exec cmd /c Taskmgr"
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 0
+  memory:
+    type: "yasb.memory.MemoryWidget"
+    options:
+      label: "<span>\uefc5</span> {virtual_mem_percent}%"
+      label_alt: "<span>\uefc5</span> {virtual_mem_used}/{virtual_mem_total}"
+      update_interval: 5000
+      callbacks:
+        on_left: "toggle_label"
+        on_middle: "do_nothing"
+        on_right: "do_nothing"
+      container_padding:
+        top: 0
+        left: 6
+        bottom: 0
+        right: 8
+  notifications:
+    type: "yasb.notifications.NotificationsWidget"
+    options:
+      label: "<span>\uf476</span> {count}"
+      label_alt: "{count} notifications"
+      hide_empty: true
+      tooltip: false
+      callbacks:
+        on_left: "toggle_notification"
+        on_right: "do_nothing"
+        on_middle: "toggle_label"
+      container_padding:
+        top: 0
+        left: 12
+        bottom: 0
+        right: 12
+  media:
+    type: "yasb.media.MediaWidget"
+    options:
+      label: "{artist} - {title}"
+      label_alt: "{title}"
+      max_field_size:
+        label: 48
+        label_alt: 64
+      show_thumbnail: false
+      controls_only: false
+      controls_left: true
+      hide_empty: true
+      thumbnail_alpha: 150
+      thumbnail_padding: 8
+      thumbnail_corner_radius: 0
+      icons:
+        prev_track: "\uf048"
+        next_track: "\uf051"
+        play: "\uf04b"
+        pause: "\uf04c"
+      container_padding:
+        top: 0
+        left: 12
+        bottom: 0
+        right: 12
+  clock:
+    type: "yasb.clock.ClockWidget"
+    options:
+      label: "<span>\uf017</span> {%a, %d/%m/%y %H:%M}"
+      label_alt: "{%A, %d %B %Y %H:%M}"
+      callbacks:
+        on_left: "toggle_calendar"
+      calendar:
+        blur: true
+        round_corners: true
+        round_corners_type: "small"
+        border_color: "None"
+        alignment: "center"
+        direction: "down"
+        distance: 6
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  komorebi_workspaces:
+    type: "komorebi.workspaces.WorkspaceWidget"
+    options:
+      label_offline: "\u23fc Offline"
+      label_workspace_btn: "\uf444"
+      label_workspace_active_btn: "\uf192"
+      label_workspace_populated_btn: "\uf444"
+      label_default_name: "{index}"
+      label_zero_index: false
+      hide_empty_workspaces: false
+      hide_if_offline: true
+      animation: false
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  volume:
+    type: "yasb.volume.VolumeWidget"
+    options:
+      label: "<span>{icon}</span> {level}"
+      label_alt: "{volume}"
+      tooltip: false
+      volume_icons:
+        - "\ueee8"
+        - "\uf026"
+        - "\uf027"
+        - "\uf027"
+        - "\uf028"
+      callbacks:
+        on_left: "toggle_volume_menu"
+        on_right: "toggle_mute"
+      audio_menu:
+        blur: true
+        round_corners: true
+        round_corners_type: "small"
+        border_color: "None"
+        alignment: "right"
+        direction: "down"
+        distance: 6
+      container_padding:
+        top: 0
+        left: 8
+        bottom: 0
+        right: 8
+  apps:
+    type: "yasb.applications.ApplicationsWidget"
+    options:
+      container_padding:
+        top: 0
+        left: 4
+        bottom: 0
+        right: 0
+      label: "{data}"
+      app_list:
+        - { icon: "\ueb03", launch: "cmd /c Taskmgr" }
+        - { icon: "\uf489", launch: "wt" }
+        - { icon: "\udb82\ude1e", launch: "Code.exe" }
+  taskbar:
+    type: "yasb.taskbar.TaskbarWidget"
+    options:
+      animation:
+        enabled: true
+      icon_size: 16
+      ignore_apps:
+        processes: []
+        titles: []
+        classes: []
+      container_padding:
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0

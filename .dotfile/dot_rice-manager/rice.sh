@@ -1,98 +1,91 @@
 #!/bin/bash
 
-# Rice script for Yasb + Komorebi
-# Modified for Komorebi + yasb
+# Rice script for Komorebi + Yasb with Catppuccin themes
+# Komorebi: tiling window manager with Catppuccin border colors
+# Yasb: status bar with hot-reload (watch_config + watch_stylesheet)
 
-availableThemes=("jade" "wasabi" "aqua" "shuri" "arcade" "julia" "khanhoa" "khlinh" "meimei" "mtram" "tlinh")
+availableThemes=("everforest" "gruvbox" "catppuccin" "comfyppuccin" "edgerunners" "dark_nord" "sky_theme" "neos" "cosmic" "spectrum" "acrylic" "moonlit" "soft_segment" "fluent" "minimal" "proto" "pillbox")
 
 usage() {
   printf "
-Rice Script for Yasb + Komorebi
+Rice Script for Komorebi + Yasb
 
 Usage:
-$(basename $0)\t[jade]    \t Introspective and layered, a soul with raw edges, nostalgic warmth
-\t[wasabi]  \t Mysterious and alluring, with eyes like deep ocean blue
-\t[aqua]    \t Full of curiosity and charm, like ocean waves
-\t[shuri]   \t A gentle presence in shades of purple, like twilight's soft embrace
-\t[arcade]  \t Neon gamer vibes, electrifying and bold
-\t[julia]   \t Horizon dark theme with warm colors
-\t[khanhoa] \t Light theme with natural green accents
-\t[khlinh]  \t Tomorrow night theme with cozy colors
-\t[meimei]  \t Simple-Elegance Gruvbox dark theme with yellow accent
-\t[mtram]   \t Everforest dark theme
-\t[tlinh]   \t Monokai pro theme with vibrant colors
+$(basename $0)\t[everforest]    \t Everforest - deep green, natural tones
+\t[gruvbox]       \t Gruvbox Material Dark - warm brown/yellow
+\t[catppuccin]    \t Catppuccin Mocha - classic blue/purple
+\t[comfyppuccin]  \t Comfyppuccin - cozy warm purple
+\t[edgerunners]   \t Edgerunners - cyberpunk neon
+\t[dark_nord]     \t Dark Nord - Nordic deep blue
+\t[sky_theme]     \t Sky Theme - blue/yellow pastel, transparent
+\t[neos]          \t Neos - clean minimal design
+\t[cosmic]        \t Cosmic Bar - dynamic colorful
+\t[spectrum]      \t Spectrum Symphony - warm rich tones
+\t[acrylic]       \t Acrylic - frosted glass blue
+\t[moonlit]       \t Moonlit Harmony - warm and deep
+\t[soft_segment]  \t Soft Segment - segmented soft design
+\t[fluent]        \t Fluent Design - Windows 11 style
+\t[minimal]       \t minimal but productive - ultra minimal
+\t[proto]         \t Proto - minimal productive theme
+\t[pillbox]       \t Pillbox - pill-shaped layout
 "
 }
 
-# Set Komorebi config
-set_komorebi_config() {
-  echo "Applying Komorebi config..."
-  KOMOREBI_CONFIG_PATH="$USERPROFILE/.config/komorebi/komorebi.json"
+# Set Komorebi Catppuccin theme
+set_komorebi_theme() {
+  echo "Applying Komorebi theme..."
+  KOMOREBI_CONFIG_PATH="$USERPROFILE/komorebi.json"
   RICE_SETTING_FILE_PATH="./rices/$theme/settings.json"
 
+  # Read komorebiTheme from settings.json
+  theme_name=$(jq -r '.komorebiTheme.name // "Mocha"' "$RICE_SETTING_FILE_PATH")
+  single_border=$(jq -r '.komorebiTheme.single_border // "Blue"' "$RICE_SETTING_FILE_PATH")
+  stack_border=$(jq -r '.komorebiTheme.stack_border // "Green"' "$RICE_SETTING_FILE_PATH")
+  unfocused_border=$(jq -r '.komorebiTheme.unfocused_border // "Surface0"' "$RICE_SETTING_FILE_PATH")
+
   # Read komorebiConfig from settings.json
-  border_single=$(jq -r '.komorebiConfig.borderColours.single' "$RICE_SETTING_FILE_PATH")
-  border_stack=$(jq -r '.komorebiConfig.borderColours.stack' "$RICE_SETTING_FILE_PATH")
-  border_monocle=$(jq -r '.komorebiConfig.borderColours.monocle' "$RICE_SETTING_FILE_PATH")
-  border_unfocused=$(jq -r '.komorebiConfig.borderColours.unfocused' "$RICE_SETTING_FILE_PATH")
-  border_floating=$(jq -r '.komorebiConfig.borderColours.floating' "$RICE_SETTING_FILE_PATH")
   border_width=$(jq -r '.komorebiConfig.borderWidth' "$RICE_SETTING_FILE_PATH")
   border_style=$(jq -r '.komorebiConfig.borderStyle' "$RICE_SETTING_FILE_PATH")
   workspace_padding=$(jq -r '.komorebiConfig.workspacePadding' "$RICE_SETTING_FILE_PATH")
   container_padding=$(jq -r '.komorebiConfig.containerPadding' "$RICE_SETTING_FILE_PATH")
-  offset_top=$(jq -r '.komorebiConfig.workAreaOffset.top' "$RICE_SETTING_FILE_PATH")
-  offset_bottom=$(jq -r '.komorebiConfig.workAreaOffset.bottom' "$RICE_SETTING_FILE_PATH")
-  offset_left=$(jq -r '.komorebiConfig.workAreaOffset.left' "$RICE_SETTING_FILE_PATH")
-  offset_right=$(jq -r '.komorebiConfig.workAreaOffset.right' "$RICE_SETTING_FILE_PATH")
 
-  # Update komorebi.json
-  jq ".border_colours.single = \"$border_single\" |
-      .border_colours.stack = \"$border_stack\" |
-      .border_colours.monocle = \"$border_monocle\" |
-      .border_colours.unfocused = \"$border_unfocused\" |
-      .border_colours.floating = \"$border_floating\" |
-      .border_width = $border_width |
+  echo "  Catppuccin: $theme_name"
+  echo "  Borders: $single_border / $unfocused_border"
+  echo "  Padding: ${workspace_padding}px"
+
+  # Update komorebi.json with Catppuccin theme
+  # IMPORTANT: border_implementation must be "Komorebi" for theme colors to work
+  jq ".border_width = $border_width |
       .border_style = \"$border_style\" |
+      .border_implementation = \"Komorebi\" |
       .default_workspace_padding = $workspace_padding |
       .default_container_padding = $container_padding |
-      .global_work_area_offset.top = $offset_top |
-      .global_work_area_offset.bottom = $offset_bottom |
-      .global_work_area_offset.left = $offset_left |
-      .global_work_area_offset.right = $offset_right" \
+      .theme = {
+        \"palette\": \"Catppuccin\",
+        \"name\": \"$theme_name\",
+        \"single_border\": \"$single_border\",
+        \"stack_border\": \"$stack_border\",
+        \"unfocused_border\": \"$unfocused_border\"
+      }" \
     "$KOMOREBI_CONFIG_PATH" > tmp.json && mv tmp.json "$KOMOREBI_CONFIG_PATH"
 
-  # Reload Komorebi configuration
-  komorebic reload-configuration > /dev/null 2>&1
-  echo "Komorebi config applied!"
+  echo "Komorebi config updated!"
 }
 
-# Set yasb theme (config + styles)
+# Set Yasb theme (hot-reload via watch_config + watch_stylesheet)
 set_yasb_theme() {
-  echo "Applying yasb theme..."
-  YASB_CONFIG_PATH="$USERPROFILE/.config/yasb/config.yaml"
-  YASB_STYLES_PATH="$USERPROFILE/.config/yasb/styles.css"
-  RICE_YASB_CONFIG="./rices/$theme/config.yaml"
-  RICE_YASB_STYLES="./rices/$theme/styles.css"
+  echo "Applying Yasb theme..."
+  YASB_CONFIG="$USERPROFILE/.config/yasb/config.yaml"
+  YASB_STYLES="$USERPROFILE/.config/yasb/styles.css"
 
-  # Copy config if exists
-  if [ -f "$RICE_YASB_CONFIG" ]; then
-    cp "$RICE_YASB_CONFIG" "$YASB_CONFIG_PATH"
-    echo "  - Yasb config applied"
+  if [ -f "./rices/$theme/config.yaml" ]; then
+    cp "./rices/$theme/config.yaml" "$YASB_CONFIG"
+    cp "./rices/$theme/styles.css" "$YASB_STYLES"
+    # Yasb watch_config + watch_stylesheet enables automatic hot-reload
+    echo "Yasb theme applied!"
   else
-    echo "  - Yasb config not found for $theme, skipping..."
+    echo "Yasb config not found for $theme, skipping..."
   fi
-
-  # Copy styles if exists
-  if [ -f "$RICE_YASB_STYLES" ]; then
-    cp "$RICE_YASB_STYLES" "$YASB_STYLES_PATH"
-    echo "  - Yasb styles applied"
-  else
-    echo "  - Yasb styles not found for $theme, skipping..."
-  fi
-
-  # Restart yasb (use powershell for reliable process management)
-  powershell.exe -Command "Stop-Process -Name yasb -Force -ErrorAction SilentlyContinue; Start-Sleep -Milliseconds 500; Start-Process yasb -WindowStyle Hidden" > /dev/null 2>&1
-  echo "Yasb theme applied!"
 }
 
 # Set VSCode theme
@@ -159,6 +152,8 @@ change_windows_lightdark_mode() {
 # Set desktop wallpaper
 set_desktop_wallpaper() {
   echo "Changing desktop wallpaper..."
+
+  # Set Windows desktop wallpaper
   powershell ./wackground.ps1 ./rices/$theme/wallpapers --set-random
   echo "Desktop wallpaper changed!"
 }
@@ -172,13 +167,18 @@ for theme in "${availableThemes[@]}"; do
     echo "Applying $theme theme"
     echo " "
 
-    # Apply configs
+    # Apply configs (update all config files first, then reload once)
     set_desktop_wallpaper
     set_windows_terminal_theme
-    set_komorebi_config
+    set_komorebi_theme
     set_yasb_theme
     set_vscode_theme
     # change_windows_lightdark_mode # Disabled, currently too buggy
+
+    # Reload Komorebi after config files are updated
+    echo "Reloading Komorebi..."
+    komorebic reload-configuration > /dev/null 2>&1
+    echo "Komorebi reloaded!"
 
     echo " "
     echo "Theme changing completed!"

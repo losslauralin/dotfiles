@@ -1,0 +1,21 @@
+{
+  "windowsTheme": "dark",
+  "windowsTerminalTheme": "Catppuccin Mocha",
+  "windowsTerminalFont": {
+    "face": "0xProto Nerd Font",
+    "size": 12,
+    "cellHeight": "1.2"
+  },
+  "komorebiConfig": {
+    "borderWidth": 4,
+    "borderStyle": "Rounded",
+    "workspacePadding": 4,
+    "containerPadding": 4
+  },
+  "komorebiTheme": {
+    "name": "Mocha",
+    "single_border": "Blue",
+    "stack_border": "Green",
+    "unfocused_border": "Surface0"
+  }
+}

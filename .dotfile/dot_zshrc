@@ -1,32 +1,24 @@
 # --- Proxy Settings ---
-
 GITSTATUS_ENABLE_VCS_INFO=0
 alias proxy="export http_proxy='http://127.0.0.1:7890'; export https_proxy='http://127.0.0.1:7890'; export HTTP_PROXY='http://127.0.0.1:7890'; export HTTPS_PROXY='http://127.0.0.1:7890'; echo 'Proxy ON'"
 alias unproxy="unset http_proxy https_proxy HTTP_PROXY HTTPS_PROXY; echo 'Proxy OFF'"
 
 proxy
-# # Print random art
+
+# Print random art
 colorscript -r
-# Created by newuser for 5.9
-# Lines configured by zsh-newuser-install
+
+# --- History ---
 HISTFILE=~/.histfile
 HISTSIZE=10000
 SAVEHIST=10000
-# 强制指定 gitstatusd 的正确绝对路径
-# bindkey -v
-# End of lines configured by zsh-newuser-install
-# The following lines were added by compinstall
 
-autoload -Uz compinit
-compinit
-# End of lines added by compinstall
-
-# Setting
-setopt autocd              # change directory just by typing its name
-setopt promptsubst         # enable command substitution in prompt
-setopt MENU_COMPLETE       # Automatically highlight first element of completion menu
-setopt AUTO_LIST           # Automatically list choices on ambiguous completion.
-setopt COMPLETE_IN_WORD    # Complete from both ends of a word.
+# --- Options ---
+setopt autocd
+setopt promptsubst
+setopt MENU_COMPLETE
+setopt AUTO_LIST
+setopt COMPLETE_IN_WORD
 setopt SHARE_HISTORY
 setopt HIST_EXPIRE_DUPS_FIRST
 setopt HIST_IGNORE_DUPS
@@ -34,15 +26,9 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_FIND_NO_DUPS
 setopt HIST_SAVE_NO_DUPS
-
-# Turn off all beeps
 unsetopt BEEP
 
-# History substring search autocompletion using arrow keys (based on history)
-bindkey '\e[A' history-substring-search-up
-bindkey '\e[B' history-substring-search-down
-
-# Alias & functions
+# --- Aliases ---
 alias ls='eza -a --icons --group-directories-first --ignore-glob="NTUSER*|ntuser*"'
 alias ll='eza -l -a --icons --group-directories-first --ignore-glob="NTUSER*|ntuser*"'
 alias winfetch='powershell winfetch'
@@ -52,16 +38,27 @@ alias rice='~/.rice-manager/rice.sh'
 alias wallpaper='~/.rice-manager/wallpaper.sh'
 alias ala='alacritty --working-directory=$(pwd) & disown'
 alias cmsp='cd $(chezmoi source-path)/..'
+
 cd() {
     builtin cd "$@" && ls;
 }
 
-# Prompt theme - Starship (替代 Powerlevel10k)
-eval "$(starship init zsh)"
 
+# Completion system - DISABLED due to MSYS2 crash (0xc0000005)
+# The compinit system causes memory access violation on this MSYS2 setup
+# Using basic tab completion instead
+# fpath=(/usr/local/share/zsh/site-functions /usr/share/zsh/site-functions /usr/share/zsh/functions/Completion $fpath)
 # Plugins
 source ~/.config/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/.config/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
 source ~/.config/zsh/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
 
+bindkey '\e[A' history-substring-search-up
+bindkey '\e[B' history-substring-search-down
+
+# Node.js
+
 eval "$(fnm env --use-on-cd --shell zsh)"
+
+# Prompt
+eval "$(starship init zsh)"

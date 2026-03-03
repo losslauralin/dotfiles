@@ -1,0 +1,23 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/schema.asc.json",
+  "PowerToys": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "PowerToys.exe", "matching_strategy": "Equals" }
+    ]
+  },
+  "Discord": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "Discord.exe", "matching_strategy": "Equals" }
+    ]
+  },
+  "QQ": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "QQ.exe", "matching_strategy": "Equals" }
+    ]
+  },
+  "WeChat": {
+    "tray_and_multi_window": [
+      { "kind": "Exe", "id": "WeChat.exe", "matching_strategy": "Equals" }
+    ]
+  }
+}

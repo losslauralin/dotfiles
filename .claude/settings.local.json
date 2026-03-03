@@ -12,7 +12,10 @@
       "Bash(yq --version)",
       "Bash(yq '.widgets.whkd | .type' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
       "Bash(yq '.bars.\"primary-bar\".widgets.left' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
-      "Bash(yq '.widgets | keys | length' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)"
+      "Bash(yq '.widgets | keys | length' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
+      "Skill(zcf:init-project)",
+      "Skill(zcf:git-commit)",
+      "Bash(git:*)"
     ]
   }
 }

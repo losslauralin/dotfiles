@@ -189,7 +189,9 @@
 
 字体需要手动下载和安装*（Windows 计划允许从 winget 安装字体。敬请期待！）*：
 
-- [Pixelcraft Nerd Font](https://github.com/jade-tam/Pixelcraft/releases)（请下载并使用 Nerd Font 版本）
+- [JetBrainsMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases)（16/17 个主题使用）
+- [0xProto Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases)（`pillbox` 主题必需）
+- [Pixelcraft Nerd Font](https://github.com/jade-tam/Pixelcraft/releases)（Nerd Font 版本）
 - [Pixel Code](https://qwerasd205.github.io/PixelCode/)
 - [Monofur Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Monofur.zip)
 - [Space Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SpaceMono.zip)
@@ -203,6 +205,11 @@
 
 ### 安装软件包
 
+- **先决条件：安装 Scoop**（starship 需要，避免路径空格问题）：
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+  ```
 - chezmoi 应用 dotfiles 后，chezmoi 源文件夹可以在 `%userprofile%/.local/share/chezmoi` 中找到，`install-packages.ps1` 文件可以在 `scripts` 文件夹中找到（⚠️ 注意：Windows Terminal 现在默认打开 zsh shell，我们还没安装，所以如果尝试打开 Windows Terminal 会显示错误，让我们打开 Windows Powershell）
 - 在 Windows 设置中启用允许执行 powershell 脚本：
 ![image](https://github.com/user-attachments/assets/2b9c84f2-56d5-46f6-8ced-6e030ca5e47a)
@@ -253,13 +260,13 @@ pacman -S zsh
 打开 **Powershell**，从你的用户文件夹（例如：`C:\Users\JadeTam>`），运行以下命令安装 zsh 主题和配置
 
 ```
-# 安装 Starship Prompt（替代 Powerlevel10k）
-# 通过 winget 安装（推荐）
-winget install --id Starship.Starship
+# 安装 Starship Prompt
+# 推荐 scoop 安装（避免 winget 安装到 "Program Files" 导致 zsh init 路径空格问题）
+scoop install starship
 
 # 或使用其他方式安装：
+# - Winget: winget install --id Starship.Starship（不推荐，有路径空格问题）
 # - Chocolatey: choco install starship
-# - Scoop: scoop install starship
 # - Cargo: cargo install starship --locked
 
 # 安装快速语法高亮插件
@@ -290,13 +297,11 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ./.config/zs
 
 ### Windows 启动时自动启动 Komorebi & Yasb
 
-- 为 **whkd** 和 **Komorebi** 创建启动脚本或快捷方式。
+现在由 `deploy.ps1` 自动处理。脚本会在 Windows 启动文件夹中创建启动批处理文件。
+
+如需手动配置：
 - 通过按 **Windows + R** 并输入 `shell:startup` 打开启动文件夹
-- 添加以下快捷方式/脚本：
-  - **whkd**（快捷键守护进程 - Komorebi 快捷键所必需）
-  - **komorebic**（Komorebi CLI）
-- Yasb 可以与 Komorebi 一起启动或单独管理。
-- 示例启动命令（创建批处理文件或快捷方式）：
+- 创建包含以下内容的批处理文件：
   ```
   start whkd
   komorebic start --await-frontend

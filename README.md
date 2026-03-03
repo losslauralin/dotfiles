@@ -189,7 +189,9 @@ You can customize each theme inside ~/.rice-manager/rices and re-apply it (see *
 
 Font need to be download and install manually *(Windows is planning to allows installing fonts from winget. Stay tune!)*:
 
-- [Pixelcraft Nerd Font](https://github.com/jade-tam/Pixelcraft/releases) (please download and use Nerd Font version)
+- [JetBrainsMono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) (Required for 16/17 themes)
+- [0xProto Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases) (Required for `pillbox` theme)
+- [Pixelcraft Nerd Font](https://github.com/jade-tam/Pixelcraft/releases) (Nerd Font version)
 - [Pixel Code](https://qwerasd205.github.io/PixelCode/)
 - [Monofur Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/Monofur.zip)
 - [Space Mono Nerd Font](https://github.com/ryanoasis/nerd-fonts/releases/download/v3.4.0/SpaceMono.zip)
@@ -203,6 +205,11 @@ Font need to be download and install manually *(Windows is planning to allows in
 
 ### Install packages
 
+- **Prerequisite: Install Scoop** (required for starship to avoid path space issues):
+  ```powershell
+  Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+  Invoke-RestMethod -Uri https://get.scoop.sh | Invoke-Expression
+  ```
 - After chezmoi apply the dotfiles, the chezmoi source folder could be found in ```%userprofile%/.local/share/chezmoi```, ```install-packages.ps1``` file can be found inside ```scripts``` folder (⚠️Note: Windows Terminal is now default open zsh shell which we haven't installed yet so it will show error if you try to open Windows Terminal, let's open Windows Powershell instead)
 - Enable allow execute powershell script in windows settings:
 ![image](https://github.com/user-attachments/assets/2b9c84f2-56d5-46f6-8ced-6e030ca5e47a)
@@ -253,13 +260,13 @@ pacman -S zsh
 Open **Powershell**, from your user folder (Example: ```C:\Users\JadeTam>```), run below command to install zsh themes and configs
 
 ```
-# Install Starship Prompt (替代 Powerlevel10k)
-# 通过 winget 安装（推荐）
-winget install --id Starship.Starship
+# Install Starship Prompt
+# 推荐 scoop 安装（避免 winget 安装到 "Program Files" 导致 zsh init 路径空格问题）
+scoop install starship
 
 # 或使用其他方式安装：
+# - Winget: winget install --id Starship.Starship（不推荐，有路径空格问题）
 # - Chocolatey: choco install starship
-# - Scoop: scoop install starship
 # - Cargo: cargo install starship --locked
 
 # Install Fast Syntax Highlighting Plugin
@@ -290,13 +297,11 @@ git clone https://github.com/zsh-users/zsh-history-substring-search ./.config/zs
 
 ### Auto start Komorebi & Yasb at windows start
 
-- Create a startup script or shortcut for **whkd** and **Komorebi**.
+This is now handled automatically by `deploy.ps1`. The script creates a startup batch file in the Windows Startup folder.
+
+If you need to manually configure:
 - Open Start Up folder by pressing **Windows + R** and type in ```shell:startup```
-- Add shortcuts/scripts for:
-  - **whkd** (hotkey daemon - required for Komorebi keybindings)
-  - **komorebic** (Komorebi CLI)
-- Yasb can be started alongside Komorebi or managed separately.
-- Example startup command (create a batch file or shortcut):
+- Create a batch file with:
   ```
   start whkd
   komorebic start --await-frontend

@@ -1,0 +1,21 @@
+{
+  "windowsTheme": "dark",
+  "windowsTerminalTheme": "Ayu Dark",
+  "windowsTerminalFont": {
+    "cellHeight": "1.2",
+    "face": "JetBrainsMono NF",
+    "size": 12
+  },
+  "komorebiConfig": {
+    "borderWidth": 4,
+    "borderStyle": "Rounded",
+    "workspacePadding": 4,
+    "containerPadding": 4
+  },
+  "komorebiTheme": {
+    "name": "Mocha",
+    "single_border": "Sky",
+    "stack_border": "Blue",
+    "unfocused_border": "Surface0"
+  }
+}
