@@ -24,7 +24,8 @@ $Steps = @(
     @{ Name = "Install Packages"; Script = "install-packages.ps1"; RequiresRestart = $true },
     @{ Name = "Setup Environment"; Script = "setup-environment.ps1"; RequiresRestart = $false },
     @{ Name = "Setup MSYS2/Zsh"; Script = "setup-msys2-shell.ps1"; RequiresRestart = $false },
-    @{ Name = "Setup WM Autostart"; Script = "setup-wm-autostart.ps1"; RequiresRestart = $false }
+    @{ Name = "Setup WM Autostart"; Script = "setup-wm-autostart.ps1"; RequiresRestart = $false },
+    @{ Name = "Install Rime Input Method"; Script = "install-rime.ps1"; RequiresRestart = $false }
 )
 
 function Write-Header {
