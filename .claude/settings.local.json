@@ -17,7 +17,12 @@
       "Skill(zcf:git-commit)",
       "Bash(git:*)",
       "Bash(ls:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "WebFetch(domain:komorebi-starlight.lgug2z.workers.dev)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:github.com)",
+      "Bash(curl:*)",
+      "Bash(find .:*)"
     ]
   }
 }

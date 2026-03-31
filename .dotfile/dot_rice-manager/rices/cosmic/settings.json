@@ -3,7 +3,7 @@
   "windowsTerminalTheme": "Catppuccin Mocha",
   "windowsTerminalFont": {
     "cellHeight": "1.2",
-    "face": "JetBrainsMono NF",
+    "face": "JetBrainsMono Nerd Font",
     "size": 12
   },
   "komorebiConfig": {

@@ -31,11 +31,57 @@ $(basename $0)\t[everforest]    \t Everforest - deep green, natural tones
 "
 }
 
+# Default komorebi.json for fresh installs
+create_default_komorebi_config() {
+  cat > "$1" <<'DEFAULT'
+{
+  "$schema": "https://komorebi.lgug2z.com/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.json",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "mouse_follows_focus": true,
+  "default_workspace_padding": 4,
+  "default_container_padding": 4,
+  "global_work_area_offset": { "top": 0, "bottom": 0, "left": 0, "right": 0 },
+  "border": true,
+  "border_implementation": "Komorebi",
+  "border_width": 4,
+  "border_offset": -1,
+  "border_style": "Rounded",
+  "floating_applications": [
+    { "kind": "Exe", "id": "QQ.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "Weixin.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "WeChatAppEx.exe", "matching_strategy": "Equals" },
+    { "kind": "Title", "id": "QQ", "matching_strategy": "Contains" },
+    { "kind": "Exe", "id": "WindowsTerminal.exe", "matching_strategy": "Equals" }
+  ],
+  "toggle_float_placement": "None",
+  "float_rule_placement": "None",
+  "stackbar": { "height": 40, "mode": "OnStack", "tabs": { "width": 300 } },
+  "transparency": false,
+  "transparency_alpha": 200,
+  "animation": { "enabled": true, "duration": 200, "style": "EaseOutQuad", "fps": 60 },
+  "theme": { "palette": "Catppuccin", "name": "Mocha", "single_border": "Green", "unfocused_border": "Surface0" },
+  "display_index_preferences": { "0": "0", "1": "XN09C91J0DNL" },
+  "monitors": [
+    { "workspaces": [ { "name": "1", "layout": "BSP" }, { "name": "2", "layout": "BSP" }, { "name": "3", "layout": "BSP" }, { "name": "4", "layout": "BSP" }, { "name": "5", "layout": "BSP" } ] },
+    { "workspaces": [ { "name": "6", "layout": "BSP" }, { "name": "7", "layout": "BSP" }, { "name": "8", "layout": "BSP" }, { "name": "9", "layout": "BSP" }, { "name": "0", "layout": "BSP" } ] }
+  ]
+}
+DEFAULT
+}
+
 # Set Komorebi Catppuccin theme
 set_komorebi_theme() {
   echo "Applying Komorebi theme..."
   KOMOREBI_CONFIG_PATH="$USERPROFILE/komorebi.json"
   RICE_SETTING_FILE_PATH="./rices/$theme/settings.json"
+
+  # Create default config if komorebi.json doesn't exist (e.g. fresh install)
+  if [ ! -f "$KOMOREBI_CONFIG_PATH" ]; then
+    echo "  Creating default komorebi.json..."
+    create_default_komorebi_config "$KOMOREBI_CONFIG_PATH"
+  fi
 
   # Read komorebiTheme from settings.json
   theme_name=$(jq -r '.komorebiTheme.name // "Mocha"' "$RICE_SETTING_FILE_PATH")
@@ -176,9 +222,16 @@ for theme in "${availableThemes[@]}"; do
     # change_windows_lightdark_mode # Disabled, currently too buggy
 
     # Reload Komorebi after config files are updated
-    echo "Reloading Komorebi..."
-    komorebic reload-configuration > /dev/null 2>&1
-    echo "Komorebi reloaded!"
+    if komorebic state > /dev/null 2>&1; then
+      echo "Reloading Komorebi..."
+      if komorebic reload-configuration; then
+        echo "Komorebi reloaded!"
+      else
+        echo "Warning: Komorebi reload failed"
+      fi
+    else
+      echo "Warning: Komorebi is not running, skipping reload"
+    fi
 
     echo " "
     echo "Theme changing completed!"

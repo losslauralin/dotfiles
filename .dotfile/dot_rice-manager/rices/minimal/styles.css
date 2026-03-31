@@ -22,7 +22,7 @@
     font-size: 12px;
     color: var(--text);
     font-weight: 400;
-    font-family: "JetBrainsMono NFP";
+    font-family: "JetBrainsMono Nerd Font Propo";
     margin: 0;
     padding: 0;
 }
@@ -321,7 +321,7 @@
 .calendar .calendar-table::item {
     background-color: rgba(17, 17, 27, 0);
     color: rgba(162, 177, 196, 0.85);
-    font-family: 'JetBrainsMono NFP';
+    font-family: 'JetBrainsMono Nerd Font Propo';
     margin: 0;
     padding: 0;
     border: none;
@@ -338,7 +338,7 @@
 .calendar .day-label,
 .calendar .month-label,
 .calendar .date-label {
-    font-family: 'JetBrainsMono NFP';
+    font-family: 'JetBrainsMono Nerd Font Propo';
     font-size: 16px;
     color: var(--mauve);
     font-weight: 700;
@@ -443,7 +443,7 @@
     border: 1px inset #4f5055;
     border-bottom: 2px inset #4f5055;
     border-radius: 4px;
-    font-family: 'JetBrainsMono NFP';
+    font-family: 'JetBrainsMono Nerd Font Propo';
 }
 .whkd-popup .keybind-button.special {
     background-color: #343538;
@@ -635,7 +635,7 @@
 .home-menu .menu-item {
     padding: 8px 48px 9px 16px;
     font-size: 12px;
-    font-family: 'JetBrainsMono NFP';
+    font-family: 'JetBrainsMono Nerd Font Propo';
     color: var(--text);
     font-weight: 600;
 }

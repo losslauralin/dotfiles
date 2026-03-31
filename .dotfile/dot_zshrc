@@ -38,6 +38,9 @@ alias rice='~/.rice-manager/rice.sh'
 alias wallpaper='~/.rice-manager/wallpaper.sh'
 alias ala='alacritty --working-directory=$(pwd) & disown'
 alias cmsp='cd $(chezmoi source-path)/..'
+alias ccb='claude --dangerously-skip-permissions'
+alias oop='opencode --yolo'
+
 
 cd() {
     builtin cd "$@" && ls;
@@ -62,3 +65,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Prompt
 eval "$(starship init zsh)"
+
+# opencode
+export PATH=/c/Users/94887/.opencode/bin:$PATH

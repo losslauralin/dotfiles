@@ -2,7 +2,7 @@
   "windowsTheme": "dark",
   "windowsTerminalTheme": "Catppuccin Mocha",
   "windowsTerminalFont": {
-    "face": "JetBrainsMono NF",
+    "face": "JetBrainsMono Nerd Font",
     "size": 12,
     "cellHeight": "1.2"
   },

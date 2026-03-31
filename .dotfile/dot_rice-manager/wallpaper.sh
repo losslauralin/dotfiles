@@ -1,29 +1,32 @@
 #!/bin/bash
 
-#  Rice script
-#  Author  :  aquapaka
-#  Url     :  https://github.com/aquapaka/dotfiles
-#  About   :  This file will configure and launch the rice.
-#
+# Wallpaper script - change wallpaper using any rice theme's wallpapers
+# Usage: wallpaper <theme-name>
 
-availableThemes=("jade" "wasabi" "aqua" "shuri" "arcade" "julia" "khanhoa" "khlinh" "meimei" "mtram" "tlinh")
+availableThemes=("everforest" "gruvbox" "catppuccin" "comfyppuccin" "edgerunners" "dark_nord" "sky_theme" "neos" "cosmic" "spectrum" "acrylic" "moonlit" "soft_segment" "fluent" "minimal" "proto" "pillbox")
 
 usage() {
   printf "
-Rice Script for change rice's current wallpaper
+Wallpaper Script - change desktop wallpaper from any rice theme
 
 Usage:
-$(basename $0)\t[jade]    \t Introspective and layered, a soul with raw edges, nostalgic warmth
-\t[wasabi]  \t Mysterious and alluring, with eyes like deep ocean blue
-\t[aqua]    \t Full of curiosity and charm, like ocean waves
-\t[shuri]   \t A gentle presence in shades of purple, like twilight's soft embrace
-\t[arcade]  \t Neon gamer vibes, electrifying and bold
-\t[julia]   \t Horizon dark theme with warm colors
-\t[khanhoa] \t Light theme with natural green accents
-\t[khlinh]  \t Tomorrow night theme with cozy colors
-\t[meimei]  \t Simple-Elegance dark theme with yellow accent
-\t[mtram]   \t Everforest dark theme
-\t[tlinh]   \t Monokai pro theme with vibrant colors
+$(basename $0)\t[everforest]     \t Everforest - deep green, natural tones
+\t[gruvbox]        \t Gruvbox Material Dark - warm brown/yellow
+\t[catppuccin]     \t Catppuccin Mocha - classic blue/purple
+\t[comfyppuccin]   \t Comfyppuccin - cozy warm purple
+\t[edgerunners]    \t Edgerunners - cyberpunk neon
+\t[dark_nord]      \t Dark Nord - Nordic deep blue
+\t[sky_theme]      \t Sky Theme - blue/yellow pastel
+\t[neos]           \t Neos - clean minimal design
+\t[cosmic]         \t Cosmic Bar - dynamic colorful
+\t[spectrum]       \t Spectrum Symphony - warm rich tones
+\t[acrylic]        \t Acrylic - frosted glass blue
+\t[moonlit]        \t Moonlit Harmony - warm and deep
+\t[soft_segment]   \t Soft Segment - segmented soft design
+\t[fluent]         \t Fluent Design - Windows 11 style
+\t[minimal]        \t minimal but productive - ultra minimal
+\t[proto]          \t Proto - minimal productive theme
+\t[pillbox]        \t Pillbox - pill-shaped layout
 "
 }
 
