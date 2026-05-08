@@ -35,8 +35,8 @@
 
 - 终端: **Windows Terminal**
 - Shell: **Zsh** (MSYS2)
-- 平铺窗口管理器: **Komorebi**
-- 状态栏: **Yasb**
+- 平铺窗口管理器: **Komorebi**（默认布局：**Scrolling**，受 Niri 启发）
+- 状态栏: **Yasb**（含内置 **whkd 快捷键弹窗** widget）
 - 快捷键守护: **whkd**
 - 包管理器: **Winget**
 - Dotfiles 管理器: **Chezmoi**
@@ -99,28 +99,77 @@
 
 ### 常用快捷键
 
+> 布局说明：所有工作区默认使用 **Scrolling**（Niri 风格滚动布局）。工作区 1–5 在 **显示器 0**，工作区 6–0 在 **显示器 1**。
+
+#### 焦点 & 移动
+
 | 按键 | 功能 |
 |:-|:-|
-|<kbd>alt</kbd> + <kbd>h</kbd>| 聚焦左侧窗口 |
-|<kbd>alt</kbd> + <kbd>j</kbd>| 聚焦下方窗口 |
-|<kbd>alt</kbd> + <kbd>k</kbd>| 聚焦上方窗口 |
-|<kbd>alt</kbd> + <kbd>l</kbd>| 聚焦右侧窗口 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h\|j\|k\|l</kbd>| 移动窗口 |
-|<kbd>alt</kbd> + <kbd>u</kbd>| 水平缩小窗口 |
-|<kbd>alt</kbd> + <kbd>p</kbd>| 水平放大窗口 |
-|<kbd>alt</kbd> + <kbd>i</kbd>| 垂直缩小窗口 |
-|<kbd>alt</kbd> + <kbd>o</kbd>| 垂直放大窗口 |
-|<kbd>alt</kbd> + <kbd>v</kbd>| 切换分割方向 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>Space</kbd>| 切换浮动 |
-|<kbd>alt</kbd> + <kbd>t</kbd>| 切换平铺 |
-|<kbd>alt</kbd> + <kbd>f</kbd>| 切换最大化 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>q</kbd>| 关闭窗口 |
-|<kbd>alt</kbd> + <kbd>1-0</kbd>| 聚焦工作区 1-10 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1-0</kbd>| 移动到工作区 1-10 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| 重载配置 |
-|<kbd>alt</kbd> + <kbd>enter</kbd>| 打开终端 |
+|<kbd>alt</kbd> + <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd>| 聚焦左 / 下 / 上 / 右 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd>| 移动窗口 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>[</kbd> / <kbd>]</kbd>| 循环聚焦上一个 / 下一个窗口 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>enter</kbd>| 提升窗口（promote） |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| 重新平铺 |
 
-ℹ️ 快捷键由 **whkd** 管理 - 查看 `$USERPROFILE/.config/whkdrc` 进行自定义
+#### 堆叠（Stack）
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>←</kbd> / <kbd>↓</kbd> / <kbd>↑</kbd> / <kbd>→</kbd>| 向方向堆叠窗口 |
+|<kbd>alt</kbd> + <kbd>;</kbd>| 取消堆叠 |
+
+#### 调整大小
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>+</kbd> / <kbd>-</kbd>| 水平放大 / 缩小 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>+</kbd> / <kbd>-</kbd>| 垂直放大 / 缩小 |
+
+#### 窗口状态
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>t</kbd>| 切换浮动 |
+|<kbd>alt</kbd> + <kbd>f</kbd>| 切换最大化 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>f</kbd>| 切换 monocle 模式 |
+|<kbd>alt</kbd> + <kbd>v</kbd>| 切换分割方向 |
+|<kbd>alt</kbd> + <kbd>q</kbd>| 关闭窗口 |
+|<kbd>alt</kbd> + <kbd>m</kbd>| 最小化窗口 |
+
+#### 布局
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>c</kbd> / <kbd>shift</kbd> + <kbd>c</kbd>| 循环切换布局：下一个 / 上一个 |
+|<kbd>alt</kbd> + <kbd>x</kbd> / <kbd>y</kbd>| 水平 / 垂直翻转布局 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>s</kbd>| 当前工作区切到 **Scrolling** 布局 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>b</kbd>| 当前工作区切到 **BSP** 布局（应急回退） |
+|<kbd>alt</kbd> + <kbd>[</kbd>| Scrolling: 1 列（窗口占满屏宽） |
+|<kbd>alt</kbd> + <kbd>]</kbd>| Scrolling: 3 列（更紧凑；默认 2 列） |
+
+#### 工作区 & 显示器
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>5</kbd>| 聚焦显示器 0 的工作区 1–5 |
+|<kbd>alt</kbd> + <kbd>6</kbd>–<kbd>0</kbd>| 聚焦显示器 1 的工作区 1–5 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| 把当前窗口移到指定工作区 |
+|<kbd>alt</kbd> + <kbd>d</kbd>| 切到上一次聚焦的工作区 |
+|<kbd>alt</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| 循环切到上一个 / 下一个显示器 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| 把当前窗口送到上一个 / 下一个显示器 |
+
+#### WM 控制 & 启动器
+
+| 按键 | 功能 |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>o</kbd>| 重载 whkd |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>o</kbd>| 重载 Komorebi 配置 |
+|<kbd>alt</kbd> + <kbd>p</kbd>| 切换暂停 |
+|<kbd>alt</kbd> + <kbd>i</kbd>| 切换 Komorebi 内部快捷键覆盖 |
+|<kbd>alt</kbd> + <kbd>enter</kbd>| 打开 Windows Terminal |
+|<kbd>alt</kbd> + <kbd>/</kbd>| 打开快捷键弹窗（也可点击 bar 上的 ⌨ 图标） |
+
+ℹ️ 快捷键由 **whkd** 管理 - 查看 `$USERPROFILE/.config/whkdrc` 自定义。yasb 的 whkd widget 会自动解析此文件并渲染弹窗。
 
 ## 📦 逐步安装指南（100% 可用 - 最后测试 2025年5月16日）
 

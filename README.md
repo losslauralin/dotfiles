@@ -35,8 +35,8 @@ Dive in, tweak to your heart's content, and transform your Windows environment i
 
 - Terminal: **Windows Terminal**
 - Shell: **Zsh** inside MSYS2
-- Tiling Window Manager: **Komorebi**
-- Bar: **Yasb**
+- Tiling Window Manager: **Komorebi** (default layout: **Scrolling**, Niri-inspired)
+- Bar: **Yasb** (with built-in **whkd shortcuts popup** widget)
 - Hotkey Daemon: **whkd**
 - Package manager: **Winget**
 - Dotfiles manager: **Chezmoi**
@@ -99,28 +99,77 @@ You can customize each theme inside ~/.rice-manager/rices and re-apply it (see *
 
 ### Useful keybindings
 
+> Layout note: workspaces use **Scrolling** (Niri-style) by default. Workspaces 1–5 live on **Monitor 0**, 6–0 on **Monitor 1**.
+
+#### Focus & move
+
 | Keys | Action |
 |:-|:-|
-|<kbd>alt</kbd> + <kbd>h</kbd>| Focus window left |
-|<kbd>alt</kbd> + <kbd>j</kbd>| Focus window bottom |
-|<kbd>alt</kbd> + <kbd>k</kbd>| Focus window top |
-|<kbd>alt</kbd> + <kbd>l</kbd>| Focus window right |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h\|j\|k\|l</kbd>| Move window |
-|<kbd>alt</kbd> + <kbd>u</kbd>| Shrink window horizontally |
-|<kbd>alt</kbd> + <kbd>p</kbd>| Expand window horizontally |
-|<kbd>alt</kbd> + <kbd>i</kbd>| Shrink window vertically |
-|<kbd>alt</kbd> + <kbd>o</kbd>| Expand window vertically |
-|<kbd>alt</kbd> + <kbd>v</kbd>| Toggle split direction |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>Space</kbd>| Toggle float |
-|<kbd>alt</kbd> + <kbd>t</kbd>| Toggle tiling |
-|<kbd>alt</kbd> + <kbd>f</kbd>| Toggle maximize |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>q</kbd>| Close window |
-|<kbd>alt</kbd> + <kbd>1-0</kbd>| Focus workspace 1-10 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1-0</kbd>| Move to workspace 1-10 |
-|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| Reload configuration |
-|<kbd>alt</kbd> + <kbd>enter</kbd>| Open terminal |
+|<kbd>alt</kbd> + <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd>| Focus window left / down / up / right |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>h</kbd> / <kbd>j</kbd> / <kbd>k</kbd> / <kbd>l</kbd>| Move window |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>[</kbd> / <kbd>]</kbd>| Cycle focus previous / next |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>enter</kbd>| Promote window |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>| Retile |
 
-ℹ️ Keybindings managed by **whkd** - see `$USERPROFILE/.config/whkdrc` for customization
+#### Stack
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>←</kbd> / <kbd>↓</kbd> / <kbd>↑</kbd> / <kbd>→</kbd>| Stack window in direction |
+|<kbd>alt</kbd> + <kbd>;</kbd>| Unstack |
+
+#### Resize
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>+</kbd> / <kbd>-</kbd>| Horizontal increase / decrease |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>+</kbd> / <kbd>-</kbd>| Vertical increase / decrease |
+
+#### Window state
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>t</kbd>| Toggle float |
+|<kbd>alt</kbd> + <kbd>f</kbd>| Toggle maximize |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>f</kbd>| Toggle monocle |
+|<kbd>alt</kbd> + <kbd>v</kbd>| Toggle split direction |
+|<kbd>alt</kbd> + <kbd>q</kbd>| Close window |
+|<kbd>alt</kbd> + <kbd>m</kbd>| Minimize window |
+
+#### Layout
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>c</kbd> / <kbd>shift</kbd> + <kbd>c</kbd>| Cycle layout next / previous |
+|<kbd>alt</kbd> + <kbd>x</kbd> / <kbd>y</kbd>| Flip layout horizontal / vertical |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>s</kbd>| Switch focused workspace to **Scrolling** layout |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>b</kbd>| Switch focused workspace to **BSP** layout (fallback) |
+|<kbd>alt</kbd> + <kbd>[</kbd>| Scrolling: 1 visible column (full width) |
+|<kbd>alt</kbd> + <kbd>]</kbd>| Scrolling: 3 visible columns (denser; default is 2) |
+
+#### Workspaces & monitors
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>5</kbd>| Focus Monitor 0 workspace 1–5 |
+|<kbd>alt</kbd> + <kbd>6</kbd>–<kbd>0</kbd>| Focus Monitor 1 workspace 1–5 |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| Move window to that workspace |
+|<kbd>alt</kbd> + <kbd>d</kbd>| Focus last workspace |
+|<kbd>alt</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| Cycle monitor previous / next |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| Send window to previous / next monitor |
+
+#### WM control & launchers
+
+| Keys | Action |
+|:-|:-|
+|<kbd>alt</kbd> + <kbd>o</kbd>| Reload whkd |
+|<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>o</kbd>| Reload Komorebi configuration |
+|<kbd>alt</kbd> + <kbd>p</kbd>| Toggle pause |
+|<kbd>alt</kbd> + <kbd>i</kbd>| Toggle shortcuts (Komorebi internal) |
+|<kbd>alt</kbd> + <kbd>enter</kbd>| Launch Windows Terminal |
+|<kbd>alt</kbd> + <kbd>/</kbd>| Open keybindings popup (or click ⌨ icon on the bar) |
+
+ℹ️ Keybindings managed by **whkd** - see `$USERPROFILE/.config/whkdrc` for customization. The yasb whkd widget auto-parses this file and renders the popup.
 
 ## 📦 Step by Step Installation (Working 100% - last tested 16/5/2025)
 
