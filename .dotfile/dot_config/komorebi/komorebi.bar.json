@@ -1,0 +1,18 @@
+{
+  "$schema": "https://raw.githubusercontent.com/LGUG2Z/komorebi/master/bar.schema.json",
+  "monitor": { "index": 0 },
+  "height": 36,
+  "font_family": "SpaceMono Nerd Font",
+  "font_size": 11,
+  "left_widgets": [
+    { "Komorebi": { "workspaces": { "enable": true } } }
+  ],
+  "center_widgets": [
+    { "Clock": { "format": "%H:%M", "enable": true } }
+  ],
+  "right_widgets": [
+    { "Battery": { "enable": true } },
+    { "Network": { "enable": true } },
+    { "Volume": { "enable": true } }
+  ]
+}

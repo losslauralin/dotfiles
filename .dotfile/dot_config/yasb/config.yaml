@@ -38,7 +38,8 @@ bars:
       left: [
         "home",
         "notes",
-        "media"
+        "media",
+        "whkd"
       ]
       center: [
         "clock"
@@ -57,6 +58,35 @@ bars:
         "power_menu"
       ]
 widgets:
+  whkd:
+    type: "yasb.whkd.WhkdWidget"
+    options:
+      label: "<span>󰃒</span>"
+      special_keys:
+        - { key: "win",        key_replace: "⊞" }
+        - { key: "ctrl",       key_replace: "Ctrl" }
+        - { key: "shift",      key_replace: "⇧" }
+        - { key: "alt",        key_replace: "Alt" }
+        - { key: "oem_4",      key_replace: "[" }
+        - { key: "oem_6",      key_replace: "]" }
+        - { key: "oem_1",      key_replace: ";" }
+        - { key: "oem_comma",  key_replace: "," }
+        - { key: "oem_period", key_replace: "." }
+        - { key: "oem_plus",   key_replace: "+" }
+        - { key: "oem_minus",  key_replace: "-" }
+        - { key: "slash",      key_replace: "/" }
+        - { key: "return",     key_replace: "↵" }
+      animation:
+        enabled: true
+        type: "fadeInOut"
+        duration: 200
+      callbacks:
+        on_left: "open_popup"
+      label_shadow:
+        enabled: true
+        color: "black"
+        radius: 6
+        offset: [ 1, 1 ]
   notes:
     type: "yasb.notes.NotesWidget"
     options:
