@@ -75,6 +75,7 @@ widgets:
         - { key: "oem_plus",   key_replace: "+" }
         - { key: "oem_minus",  key_replace: "-" }
         - { key: "slash",      key_replace: "/" }
+        - { key: "oem_2",      key_replace: "/" }
         - { key: "return",     key_replace: "↵" }
       animation:
         enabled: true

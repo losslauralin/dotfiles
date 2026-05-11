@@ -108,4 +108,4 @@ alt + shift + b         : komorebic change-layout bsp
 # === Keybindings help popup (yasb whkd widget) ===
 # Click the keyboard icon on the bar to open the popup.
 # alt + / = fallback: touch yasb config so watch_config re-renders the bar
-alt + slash             : pwsh -NoProfile -Command "(Get-Item $env:USERPROFILE\.config\yasb\config.yaml).LastWriteTime = Get-Date"
+alt + oem_2             : pwsh -NoProfile -Command "(Get-Item $env:USERPROFILE\.config\yasb\config.yaml).LastWriteTime = Get-Date" # oem_2 is /
