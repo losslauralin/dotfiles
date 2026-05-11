@@ -99,7 +99,7 @@
 
 ### 常用快捷键
 
-> 布局说明：所有工作区默认使用 **Scrolling**（Niri 风格滚动布局）。工作区 1–5 在 **显示器 0**，工作区 6–0 在 **显示器 1**。
+> 布局说明：所有工作区默认使用 **Scrolling**（Niri 风格滚动布局），10 个工作区都挂在同一个 monitor 配置项下（komorebi v0.1.40 限制：接入多个物理显示器时 scrolling 自动 fallback 到 columns；下方跨显示器快捷键在接副屏时仍可用）。
 
 #### 焦点 & 移动
 
@@ -151,8 +151,7 @@
 
 | 按键 | 功能 |
 |:-|:-|
-|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>5</kbd>| 聚焦显示器 0 的工作区 1–5 |
-|<kbd>alt</kbd> + <kbd>6</kbd>–<kbd>0</kbd>| 聚焦显示器 1 的工作区 1–5 |
+|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| 聚焦工作区 1–10 |
 |<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| 把当前窗口移到指定工作区 |
 |<kbd>alt</kbd> + <kbd>d</kbd>| 切到上一次聚焦的工作区 |
 |<kbd>alt</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| 循环切到上一个 / 下一个显示器 |

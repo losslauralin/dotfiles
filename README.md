@@ -99,7 +99,7 @@ You can customize each theme inside ~/.rice-manager/rices and re-apply it (see *
 
 ### Useful keybindings
 
-> Layout note: workspaces use **Scrolling** (Niri-style) by default. Workspaces 1–5 live on **Monitor 0**, 6–0 on **Monitor 1**.
+> Layout note: workspaces use **Scrolling** (Niri-style) by default — all 10 workspaces live on a single monitor entry (komorebi v0.1.40 limitation: scrolling falls back to columns when multiple physical monitors are attached; the cross-monitor shortcuts below still work once an external display is connected).
 
 #### Focus & move
 
@@ -151,8 +151,7 @@ You can customize each theme inside ~/.rice-manager/rices and re-apply it (see *
 
 | Keys | Action |
 |:-|:-|
-|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>5</kbd>| Focus Monitor 0 workspace 1–5 |
-|<kbd>alt</kbd> + <kbd>6</kbd>–<kbd>0</kbd>| Focus Monitor 1 workspace 1–5 |
+|<kbd>alt</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| Focus workspace 1–10 |
 |<kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>1</kbd>–<kbd>0</kbd>| Move window to that workspace |
 |<kbd>alt</kbd> + <kbd>d</kbd>| Focus last workspace |
 |<kbd>alt</kbd> + <kbd>,</kbd> / <kbd>.</kbd>| Cycle monitor previous / next |

@@ -66,11 +66,7 @@
           "name": "5",
           "layout": "Scrolling",
           "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
-        }
-      ]
-    },
-    {
-      "workspaces": [
+        },
         {
           "name": "6",
           "layout": "Scrolling",
