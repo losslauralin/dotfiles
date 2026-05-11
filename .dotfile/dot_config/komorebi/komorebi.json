@@ -14,7 +14,7 @@
   },
   "border": true,
   "border_implementation": "Komorebi",
-  "border_width": 2,
+  "border_width": 4,
   "border_offset": -1,
   "border_style": "Rounded",
   "stackbar": {
@@ -35,8 +35,8 @@
   "theme": {
     "palette": "Catppuccin",
     "name": "Mocha",
-    "single_border": "Yellow",
-    "stack_border": "Peach",
+    "single_border": "Mauve",
+    "stack_border": "Pink",
     "unfocused_border": "Surface0"
   },
   "monitors": [
