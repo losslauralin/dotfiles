@@ -1,7 +1,18 @@
 {
   "permissions": {
     "allow": [
-      "Skill(zcf:init-project)"
+      "mcp__exa__web_fetch_exa",
+      "mcp__mcp-deepwiki__deepwiki_fetch",
+      "mcp__exa__web_search_exa",
+      "Bash(curl -s \"https://api.github.com/repos/agent-kilo/jwno/git/trees/master?recursive=1\")",
+      "Bash(python3 -c \"import yaml; yaml.safe_load\\(open\\('/c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml'\\)\\); print\\('YAML valid'\\)\")",
+      "Bash(py -c \"import yaml; yaml.safe_load\\(open\\(r'C:\\\\Users\\\\94887\\\\dotfiles\\\\.dotfile\\\\dot_config\\\\yasb\\\\config.yaml'\\)\\); print\\('YAML valid'\\)\")",
+      "Bash(grep -n -A 6 'widgets:$' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
+      "Bash(python -c \"import yaml; yaml.safe_load\\(open\\('/c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml'\\)\\); print\\('YAML valid'\\)\")",
+      "Bash(yq --version)",
+      "Bash(yq '.widgets.whkd | .type' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
+      "Bash(yq '.bars.\"primary-bar\".widgets.left' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)",
+      "Bash(yq '.widgets | keys | length' /c/Users/94887/dotfiles/.dotfile/dot_config/yasb/config.yaml)"
     ]
   }
 }
