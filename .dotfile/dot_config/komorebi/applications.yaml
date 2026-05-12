@@ -17,3 +17,19 @@
     matching_strategy: Equals
   options:
     - tray_and_multi_window
+
+- name: "QQ"
+  identifier:
+    kind: Exe
+    id: QQ.exe
+    matching_strategy: Equals
+  options:
+    - tray_and_multi_window
+
+- name: "WeChat"
+  identifier:
+    kind: Exe
+    id: WeChat.exe
+    matching_strategy: Equals
+  options:
+    - tray_and_multi_window
