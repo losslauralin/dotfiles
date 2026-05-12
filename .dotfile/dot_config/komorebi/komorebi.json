@@ -1,0 +1,105 @@
+{
+  "$schema": "https://komorebi.lgug2z.com/schema.json",
+  "app_specific_configuration_path": "$Env:USERPROFILE/.config/komorebi/applications.yaml",
+  "window_hiding_behaviour": "Cloak",
+  "cross_monitor_move_behaviour": "Insert",
+  "mouse_follows_focus": true,
+  "default_workspace_padding": 4,
+  "default_container_padding": 4,
+  "global_work_area_offset": {
+    "top": 0,
+    "bottom": 0,
+    "left": 0,
+    "right": 0
+  },
+  "border": true,
+  "border_implementation": "Komorebi",
+  "border_width": 4,
+  "border_offset": -1,
+  "border_style": "Rounded",
+  "floating_applications": [
+    { "kind": "Exe", "id": "QQ.exe", "matching_strategy": "Equals" },
+    { "kind": "Exe", "id": "WeChat.exe", "matching_strategy": "Equals" },
+    { "kind": "Title", "id": "QQ", "matching_strategy": "Contains" }
+  ],
+  "toggle_float_placement": "None",
+  "float_rule_placement": "None",
+  "stackbar": {
+    "height": 40,
+    "mode": "OnStack",
+    "tabs": {
+      "width": 300
+    }
+  },
+  "transparency": false,
+  "transparency_alpha": 200,
+  "animation": {
+    "enabled": true,
+    "duration": 200,
+    "style": "EaseOutQuad",
+    "fps": 60
+  },
+  "theme": {
+    "palette": "Catppuccin",
+    "name": "Mocha",
+    "single_border": "Mauve",
+    "stack_border": "Pink",
+    "unfocused_border": "Surface0"
+  },
+  "monitors": [
+    {
+      "workspaces": [
+        {
+          "name": "1",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "2",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "3",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "4",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "5",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "6",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "7",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "8",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "9",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        },
+        {
+          "name": "0",
+          "layout": "Scrolling",
+          "layout_options": { "scrolling": { "columns": 2, "center_focused_column": false } }
+        }
+      ]
+    }
+  ]
+}
